@@ -49,6 +49,8 @@ h1, h2, h3, h4, h5, h6, p {
 nav li {
 	display: block;
 	float: left;
+	font-size:2em;
+	margin-right: 10px;
 }
 
 
@@ -71,4 +73,18 @@ nav li {
 	text-align: center;
 	width:250px;
 	
+}
+
+.hr {
+	background:#000;
+	height:20px;
+	
+}
+
+header h1 {
+	color:#fff;
+}
+
+footer {
+	padding-top:20px;
 }

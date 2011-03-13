@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
 	<title>jquery.VideoBG.js</title>
+	<link rel="stylesheet" href="framework.css"/>
 
 	<link rel="stylesheet" href="style.css"/>
 
@@ -14,19 +15,41 @@
 	<div class="wrapper">	
 		<header>
 		
-			<h1><a href="" id="donate_now" style="float:right">Donate</a>
+			<h1><a href="#donate" id="donate_now" style="float:right">Buy me a beer</a>
 				jquery.videoBG plugin</h1>
 		</header>
 		
 		
 		<div id="main">
 			<nav>
-				<li><a href="#installation">Installation</a></li>
-				<li><a href="#documentation">Documentation</a></li>
-				<li><a href="#demos">Demos</a></li>
-				<li><a href="#donate">Donate</a></li>
-				<li><a href="#about">About</a></li>
+				<li><a href="index.html#about">About</a></li>
+				<li><a href="index.html#installation">Installation</a></li>
+				<li><a href="index.html#documentation">Documentation</a></li>
+				<li><a href="index.html#demos">Demos</a></li>
+				<li><a href="index.html#donate">Donate a beer</a></li>
+				
 			</nav>
+		
+			<div id="about" class="tab">
+				<h2>About</h2>
+				<p>This jQuery plugin enables you to very easily use a video as a background to a website.</p>
+				<p>For browsers that don't support the HTML5 video tag, it just uses an image.</p>
+				<div class="alert">
+					<h3>Warning</h3>
+					<p>Don't abuse this code... Don't use it too often, too many instances will slow down the browser.</p>
+				</div>
+				<h3>Browser Support</h3>
+				<ul>
+					<li>Internet Explorer 9</li>
+					<li>Internet Explorer 8</li>
+					<li>Internet Explorer 7</li>
+					<li>Firefox</li>
+					<li>Google Chrome</li>
+					<li>Safari</li>
+				</ul>
+				<h3>Mobile Devices</h3>
+				<p>To be filled</p>
+			</div>
 		
 			<div id="installation" class="tab">
 				<h2>Installation</h2>
@@ -35,60 +58,68 @@
 			</div>
 			<div id="documentation" class="tab">
 				<h2>Documentation</h2>
-				<p>Suspendisse vestibulum dignissim quam. Integer vel augue. Phasellus nulla purus, interdum ac, venenatis non, varius rutrum, leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis a eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce magna mi, porttitor quis, convallis eget, sodales ac, urna. Phasellus luctus venenatis magna. Vivamus eget lacus. Nunc tincidunt convallis tortor. Duis eros mi, dictum vel, fringilla sit amet, fermentum id, sem. Phasellus nunc enim, faucibus ut, laoreet in, consequat id, metus. Vivamus dignissim. Cras lobortis tempor velit. Phasellus nec diam ac nisl lacinia tristique. Nullam nec metus id mi dictum dignissim. Nullam quis wisi non sem lobortis condimentum. Phasellus pulvinar, nulla non aliquam eleifend, tortor wisi scelerisque felis, in sollicitudin arcu ante lacinia leo.</p>
-				<p>Suspendisse vestibulum dignissim quam. Integer vel augue. Phasellus nulla purus, interdum ac, venenatis non, varius rutrum, leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis a eros.</p>
+		
+				<p>
+				<code>$(el).videoBG(options);</code>
+				</p>
+				
+				<h3><code>options</code></h3>
+				
+				<dl>
+					<dt>mp4</dt>
+					<dd><i>required.</i> this is the src for the video</dd>
+			<dt>ogg</dt>
+					<dd><i>required.</i> this is the src for the video</dd>
+			<dt>webm</dt>
+					<dd><i>required.</i> this is the src for the video</dd>
+			<dt>poster</dt>
+					<dd><i>required.</i> this is the src for the img</dd>
+			<dt>autoplay</dt>
+					<dd><code>bool</code></dd>
+			<dt>loop</dt>
+					<dd><code>bool</code></dd>
+			<dt>sclae</dt>
+					<dd><code>bool</code></dd>
+			<dt>position</dt>
+					<dd>the css position of the video</dd>
+			<dt>opacity</dt>
+					<dd><code>int</code> 0 - 1</dd>
+			<dt>textReplacement</dt>
+					<dd><code>bool</code> - used if you are replacing text</dd>
+			<dt>zIndex</dt>
+					<dd>optional</dd>
+			<dt>width</dt>
+					<dd><i>required if textReplacement.</i></dd>
+			<dt>height</dt>
+					<dd><i>required if textReplacement.</i></dd>
+				
+				
+				</dl>
 			</div>
 			<div id="demos" class="tab">
 				<h2>Demos</h2>
-				<p>Suspendisse vestibulum dignissim quam. Integer vel augue. Phasellus nulla purus, interdum ac, venenatis non, varius rutrum, leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis a eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce magna mi, porttitor quis, convallis eget, sodales ac, urna. Phasellus luctus venenatis magna. Vivamus eget lacus. Nunc tincidunt convallis tortor. Duis eros mi, dictum vel, fringilla sit amet, fermentum id, sem. Phasellus nunc enim, faucibus ut, laoreet in, consequat id, metus. Vivamus dignissim. Cras lobortis tempor velit. Phasellus nec diam ac nisl lacinia tristique. Nullam nec metus id mi dictum dignissim. Nullam quis wisi non sem lobortis condimentum. Phasellus pulvinar, nulla non aliquam eleifend, tortor wisi scelerisque felis, in sollicitudin arcu ante lacinia leo.</p>
 				
-				<div class="demo">
-					<h2>Standard div background</h2>
-					<div id="div_demo">
-						<span>This is a div demo</span>
-					</div>
-<pre><code>
-$('#div_demo').videoBG({
-	mp4:'tunnel_animation.m4v',
-	ogg:'tunnel_animation.ogg',
-	webm:'tunnel_animation.webm',
-	poster:'tunnel_animation.jpg',
-	scale:true,
-	zIndex:0
-});
-</code></pre>
-				</div>
-				<div class="demo">
-				<h2>Text Replacement</h2>
-				<h3 id="text_replacement_demo">
-					This is a text replacement demo
-				</h3>
+					
 				
-<pre><code>
-$('#text_replacement_demo').videoBG({
-		mp4:'text_replacement.m4v',
-		ogg:'text_replacement.ogg',
-		webm:'text_replacement.webm',
-		poster:'text_replacement.png',
-		textReplacement:true
-	});
-</code></pre>				
+				<ul>
+					<li><a href="demo_bg.html">Body BG</a></li>
+					<li><a href="demo_div.html">Div BG</a></li>
+					<li><a href="demo_text.html">Text Replacement Demo</a></li>
+				</ul>
 				
-				</div>
-				
-				<p>Suspendisse vestibulum dignissim quam. Integer vel augue. Phasellus nulla purus, interdum ac, venenatis non, varius rutrum, leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis a eros.</p>
 			</div>
 			<div id="donate" class="tab">
-				<h2>Donate</h2>
-				<p>Suspendisse vestibulum dignissim quam. Integer vel augue. Phasellus nulla purus, interdum ac, venenatis non, varius rutrum, leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis a eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce magna mi, porttitor quis, convallis eget, sodales ac, urna. Phasellus luctus venenatis magna. Vivamus eget lacus. Nunc tincidunt convallis tortor. Duis eros mi, dictum vel, fringilla sit amet, fermentum id, sem. Phasellus nunc enim, faucibus ut, laoreet in, consequat id, metus. Vivamus dignissim. Cras lobortis tempor velit. Phasellus nec diam ac nisl lacinia tristique. Nullam nec metus id mi dictum dignissim. Nullam quis wisi non sem lobortis condimentum. Phasellus pulvinar, nulla non aliquam eleifend, tortor wisi scelerisque felis, in sollicitudin arcu ante lacinia leo.</p>
-				<p>Suspendisse vestibulum dignissim quam. Integer vel augue. Phasellus nulla purus, interdum ac, venenatis non, varius rutrum, leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis a eros.</p>
-			</div>
-			<div id="about" class="tab">
-				<h2>About</h2>
-				<p>Suspendisse vestibulum dignissim quam. Integer vel augue. Phasellus nulla purus, interdum ac, venenatis non, varius rutrum, leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis a eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Fusce magna mi, porttitor quis, convallis eget, sodales ac, urna. Phasellus luctus venenatis magna. Vivamus eget lacus. Nunc tincidunt convallis tortor. Duis eros mi, dictum vel, fringilla sit amet, fermentum id, sem. Phasellus nunc enim, faucibus ut, laoreet in, consequat id, metus. Vivamus dignissim. Cras lobortis tempor velit. Phasellus nec diam ac nisl lacinia tristique. Nullam nec metus id mi dictum dignissim. Nullam quis wisi non sem lobortis condimentum. Phasellus pulvinar, nulla non aliquam eleifend, tortor wisi scelerisque felis, in sollicitudin arcu ante lacinia leo.</p>
-				<p>Suspendisse vestibulum dignissim quam. Integer vel augue. Phasellus nulla purus, interdum ac, venenatis non, varius rutrum, leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis a eros.</p>
-			</div>
+				<h2>Donate a beer</h2>
+				<p>You are more than welcome to donate me some beer money :)</p>
+				<p>I recommend &pound;3 for a donation, just &pound;3!</p>
+				<a href='http://www.pledgie.com/campaigns/14895'><img alt='Click here to lend your support to: jquery.videoBG and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/14895.png?skin_name=chrome' border='0' /></a>
+							</div>
+			<footer>
+			<a href="http://sydlawrence.com" style="float:right;color:#a1a1a1;">Handcrafted by Syd</a>
+		</footer>
 		</div>
+		<div class="clearfix">&nbsp;</div>
+		
 	</div>
 </body>
 </html>

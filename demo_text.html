@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+	<title>jquery.VideoBG.js</title>
+	<link rel="stylesheet" href="framework.css"/>
+
+	<link rel="stylesheet" href="style.css"/>
+
+	<script type="text/javascript" src="jquery-1.5.1.js"></script>
+	<script type="text/javascript" src="jquery.videoBG.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+	<div class="wrapper">	
+		<header>
+		
+			<h1><a href="#donate" id="donate_now" style="float:right">Buy me a beer</a>
+				jquery.videoBG plugin</h1>
+		</header>
+		
+		
+		<div id="main">
+			<nav>
+				<li><a href="index.html#about">About</a></li>
+				<li><a href="index.html#installation">Installation</a></li>
+				<li><a href="index.html#documentation">Documentation</a></li>
+				<li><a href="index.html#demos">Demos</a></li>
+				<li><a href="index.html#donate">Donate a beer</a></li>
+				
+			</nav>
+		
+			
+			<div id="demos" class="tab">
+				
+				
+				<div class="demo">
+				<h2>Text Replacement</h2>
+				<h3 id="text_replacement_demo">
+					This is a text replacement demo
+				</h3>
+				
+<pre><code>
+$('#text_replacement_demo').videoBG({
+		mp4:'text_replacement.mp4',
+		ogg:'text_replacement.ogg',
+		webm:'text_replacement.webm',
+		poster:'text_replacement.png',
+		textReplacement:true,
+		width:760,
+		height:24
+	});
+</code></pre>				
+				
+				</div>
+				
+				
+			</div>
+			<div id="donate" class="tab">
+				<h2>Donate a beer</h2>
+				<p>You are more than welcome to donate me some beer money :)</p>
+				<p>I recommend &pound;3 for a donation, just &pound;3!</p>
+				<form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="syd@sydlawrence.com">
+<input type="hidden" name="item_name" value="jquery.videoBG donation">
+<input type="hidden" name="currency_code" value="GBP">
+<input type="hidden" name="amount" value="3.00">
+<input type="image" src="http://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
+			</div>
+			<footer>
+			<a href="http://sydlawrence.com" style="float:right;color:#a1a1a1;">Handcrafted by Syd</a>
+		</footer>
+		</div>
+		<div class="clearfix">&nbsp;</div>
+		
+	</div>
+</body>
+</html>

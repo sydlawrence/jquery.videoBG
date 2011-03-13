@@ -16,22 +16,24 @@
 			return $(selector).videoBG(options);		
 		}
 		
-				
-		var settings = options;
-
-		
 		var content = $(this);
 		
-		
-		
+		console.log(content.css('position'));
+		if (content.css('position') == 'static')
+			content.css('position','relative');
+		if (options.width == 0)
+			options.width = content.width();
+		if (options.height == 0)
+			options.height = content.height();	
+
 		var wrap = $.fn.videoBG.wrapper();
 		wrap.height(content.height());
 		wrap.width(content.width());
 						
 		if (options.textReplacement) {
 			options.scale = true;
-			content.width(content.width());
-			content.height(content.height());
+			content.width(options.width);
+			content.height(options.height);
 			content.css('position','relative');
 			content.css('text-indent','-999px');
 		}
@@ -46,10 +48,10 @@
 		wrap.html(content.html());
 		
 		if (options.scale) {
-			wrap.height(content.height());
-			wrap.width(content.width());
-			video.height(content.height());
-			video.width(content.width());
+			wrap.height(options.height);
+			wrap.width(options.width);
+			video.height(options.height);
+			video.width(options.width);
 		}
 		
 		content.html(wrap);
@@ -68,14 +70,14 @@
 			.css('z-index',options.zIndex)
 			.css('top',0)
 			.css('left',0)
-			.css('height','100%')
-			.css('width','100%')
+			.css('height',options.height)
+			.css('width',options.width)
 			.css('opacity',options.opacity)
 			.css('overflow','hidden');
 		var $video = $('<video/>');
 		$video.attr('autoplay',options.autoplay)
 			.attr('loop',options.loop)
-			.attr('poster',options.poster)
+	//		.attr('poster',options.poster)
 			
 			.css('position','absolute')
 			.css('z-index',options.zIndex)
@@ -113,6 +115,19 @@
 			$img.css('height','100%').css('width','100%');
 		}
 		
+		if (options.textReplacement) {
+	
+			$div.css('min-height',1).css('min-width',1);
+			$video.css('min-height',1).css('min-width',1);
+			$img.css('min-height',1).css('min-width',1);
+			
+			$div.height(options.height).width(options.width);
+			$video.height(options.height).width(options.width);
+			$img.height(options.height).width(options.width);
+		
+		
+		}
+		
 		
 		
 		return $div;
@@ -130,6 +145,7 @@
 	$.fn.videoBG.defaults = {
 			mp4:'',
 			ogg:'',
+			webm:'',
 			poster:'',
 			autoplay:true,
 			loop:true,
@@ -137,7 +153,9 @@
 			position:"absolute",
 			opacity:1,
 			textReplacement:false,
-			zIndex:0
+			zIndex:0,
+			width:0,
+			height:0
 		}
 
 })( jQuery );
