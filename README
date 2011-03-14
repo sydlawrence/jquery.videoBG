@@ -1,0 +1,9 @@
+jquery.videoBG by Syd Lawrence ( www.sydlawrence.com )
+
+Version: 0.1
+
+Usage: $('body').videoBG(options);
+
+
+Disclaimer: Don't abuse this code... Don't use it too often, too many video instances will slow down the browser.
+
