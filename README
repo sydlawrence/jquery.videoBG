@@ -1,6 +1,8 @@
+http://syddev.com/jquery.videoBG
+
 jquery.videoBG by Syd Lawrence ( www.sydlawrence.com )
 
-Version: 0.1
+Version: 0.1a
 
 Usage: $('body').videoBG(options);
 
