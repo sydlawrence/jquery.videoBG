@@ -10,7 +10,16 @@
 
 (function( $ ){
 
-	$.fn.videoBG = function( selector, options ) {  
+	$.fn.videoBG = function( selector, options ) { 
+	
+		// if mobile safari
+		if ($.fn.isMobileSafari())
+			return;
+		
+		// if doesn't support position fixed
+		if (!$.fn.canPositionFixed())
+			return
+		
 		var options = {};
 		if (typeof selector == "object") {
 			options = $.extend({}, $.fn.videoBG.defaults, selector);
@@ -29,7 +38,7 @@
 			return;
 		
 		// container to be at least relative
-		if (container.css('position') == 'static' || !content.css('position'))
+		if (container.css('position') == 'static' || !container.css('position'))
 			container.css('position','relative');
 		
 		// we need a width
@@ -92,7 +101,7 @@
 		
 		// video container
 		var $div = $('<div/>');
-		$div.attr('id','videoBG')
+		$div.addClass('videoBG')
 			.css('position',options.position)
 			.css('z-index',options.zIndex)
 			.css('top',0)
@@ -104,44 +113,81 @@
 		
 		// video element
 		var $video = $('<video/>');
-		$video.attr('autoplay',options.autoplay)
-			.css('position','absolute')
+		$video.css('position','absolute')
 			.css('z-index',options.zIndex)
+			.attr('poster',options.poster)
 			.css('top',0)
 			.css('left',0)
 			.css('min-width','100%')
 			.css('min-height','100%');
 		
+		if (options.autoplay) {
+			$video.attr('autoplay',options.autoplay);
+		}
+			
+		
 		// video standard element
 		var v = $video[0];
 		
+		
+		
 		// if meant to loop
 		if (options.loop) {
-			
+			loops_left = options.loop;
+		
 			// cant use the loop attribute as firefox doesnt support it
 			$video.bind('ended', function(){
-			
-				// replay that bad boy
-				v.play();
+				
+				// if we have some loops to throw
+				if (loops_left)
+					// replay that bad boy
+					v.play();
+				
+				// if not forever
+				if (loops_left !== true)
+					// one less loop
+					loops_left--;
   			});
 		}
-	  
-	  	// supports webm
-	  	if (v.canPlayType('video/webm; codecs="vp8, vorbis"')){
-	  		// play webm
-	  		$video.attr('src',options.webm);
+		
+		// when can play, play
+		$video.bind('canplay', function(){
+			
+			if (options.autoplay)
+				// replay that bad boy
+				v.play();
+				
+		});
+		
+		
+		// if supports video
+		if ($.fn.videoBG.supportsVideo()) {
 
+		  	// supports webm
+		  	if ($.fn.videoBG.supportType('webm')){
+		  		
+		  		// play webm
+		  		$video.attr('src',options.webm);
+		  	}
+		  	// supports mp4
+		  	else if ($.fn.videoBG.supportType('mp4')) {	  	
+		  		
+		  		// play mp4
+		  		$video.attr('src',options.mp4);
+		  		
+		  	//	$video.html('<source src="'.options.mp4.'" />');
+		  		
+		  	}
+		  	// throw ogv at it then
+		  	else {
+		  		
+		  		// play ogv
+		  		$video.attr('src',options.ogv);
+		  	}
+	  	
 	  	}
-	  	// supports mp4
-	  	else if (v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"')) {
-	  		// play mp4
-	  		$video.attr('src',options.mp4);
-	  	}
-	  	// supports ogv
-	  	else {
-	  		// play ogv
-	  		$video.attr('src',options.ogv);
-	  	}
+	  	
+	  	
 		
 		// image for those that dont support the video	
 		var $img = $('<img/>');
@@ -154,11 +200,18 @@
 			.css('min-height','100%');
 		
 		// add the image to the video
-		$video.html($img);
+		// if suuports video
+		if ($.fn.videoBG.supportsVideo()) {
+			// add the video to the wrapper
+			$div.html($video);
+		}
 		
-		// add the video to the wrapper
-		$div.html($video);
-		
+		// nope - whoa old skool
+		else {
+			
+			// add the image instead
+			$div.html($img);
+		}
 		// am I really doing this again?
 		if (options.scale) {
 			$div.css('height','100%').css('width','100%');
@@ -178,14 +231,47 @@
 			$video.height(options.height).width(options.width);
 			$img.height(options.height).width(options.width);	
 		}
+		
+		v.play();
 	
 		return $div;
+	}
+	
+	// check if suuports video
+	$.fn.videoBG.supportsVideo = function() {
+		return (document.createElement('video').canPlayType);
+	}
+	
+	// check which type is supported
+	$.fn.videoBG.supportType = function(str) {
+		
+		// if not at all supported
+		if (!$.fn.videoBG.supportsVideo())
+			return false;
+		
+		// create video
+		var v = document.createElement('video');
+		
+		// check which?
+		switch (str) {
+			case 'webm' :
+				return (v.canPlayType('video/webm; codecs="vp8, vorbis"'));
+				break;
+			case 'mp4' :
+				return (v.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"'));
+				break;
+			case 'ogv' :
+				return (v.canPlayType('video/ogg; codecs="theora, vorbis"'));
+				break;			
+		}
+		// nope
+		return false;	
 	}
 	
 	// get the overlay wrapper
 	$.fn.videoBG.wrapper = function() {
 		var $wrap = $('<div/>');
-		$wrap.attr('id','videoBG_wrapper')
+		$wrap.addClass('videoBG_wrapper')
 			.css('position','absolute')
 			.css('top',0)
 			.css('left',0);
@@ -199,7 +285,7 @@
 			webm:'',
 			poster:'',
 			autoplay:true,
-			loop:true,
+			loop:5,
 			sclae:false,
 			position:"absolute",
 			opacity:1,
@@ -211,3 +297,36 @@
 
 })( jQuery );
 
+$.fn.isMobileSafari = function (){
+	return (navigator.userAgent.match( /(iPod|iPhone|iPad)/ ) );
+};
+
+$.fn.canPositionFixed = function (){
+  var container = document.body;
+  
+  if (document.createElement && container && container.appendChild && container.removeChild) {
+    var el = document.createElement('div');
+    
+    if (!el.getBoundingClientRect) return null;
+        
+    el.innerHTML = 'x';
+    el.style.cssText = 'position:fixed;top:100px;';
+    container.appendChild(el);
+
+    var originalHeight = container.style.height,
+        originalScrollTop = container.scrollTop;
+
+    container.style.height = '3000px';
+    container.scrollTop = 500;
+
+    var elementTop = el.getBoundingClientRect().top;
+    container.style.height = originalHeight;
+    
+    var isSupported = (elementTop === 100);
+    container.removeChild(el);
+    container.scrollTop = originalScrollTop;
+
+    return isSupported;
+  }
+  return null;
+}

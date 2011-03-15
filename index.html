@@ -2,52 +2,122 @@
 <html lang="">
 <head>
   <meta charset="utf-8">
-	<title>jquery.VideoBG.js</title>
-	<link rel="stylesheet" href="framework.css"/>
+	<title>Make an HTML video a background</title>
+	<link rel="stylesheet" href="assets/framework.css"/>
 
-	<link rel="stylesheet" href="style.css"/>
+	<link rel="stylesheet" href="assets/style.css"/>
 
-	<script type="text/javascript" src="jquery-1.5.1.js"></script>
+	<script type="text/javascript" src="assets/jquery-1.5.1.js"></script>
 	<script type="text/javascript" src="jquery.videoBG.js"></script>
-	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="assets/script.js"></script>
 </head>
 <body>
 	<div class="wrapper">	
-		<header>
+		<div id="header">
 		
-			<h1><a href="#donate" id="donate_now" style="float:right">Buy me a beer</a>
+			<h1><a href="http://www.pledgie.com/campaigns/14895" id="donate_now" style="float:right">Buy me a beer</a>
 				jquery.videoBG plugin</h1>
-		</header>
+		</div>
 		
 		
 		<div id="main">
-			<nav>
-				<li><a href="index.html#about">About</a></li>
-				<li><a href="index.html#documentation">Documentation</a></li>
-				<li><a href="index.html#demos">Demos</a></li>
-				<li><a href="index.html#donate">Donate a beer</a></li>
+			<ul id="nav">
+				<li><a href="#about">About</a></li>
+				<li><a href="#documentation">Documentation</a></li>
+				<li><a href="#demos">Demos</a></li>
+				<li><a href="#demos">Download</a></li>
+				<li><a href="#donate">Donate a beer</a></li>
 				
-			</nav>
+			</ul>
 		
 			<div id="about" class="tab">
+				
+				<a style="float:right" href="http://www.w3.org/html/logo/">
+					<img src="http://www.w3.org/html/logo/badge/html5-badge-h-multimedia.png" width="133" height="64" alt="HTML5 Powered with Multimedia" title="HTML5 Powered with Multimedia">
+				</a>
+			
 				<h2>About</h2>
-				<p>This jQuery plugin enables you to very easily use a video as a background to a website.</p>
+				<p>This jQuery plugin enables you to very easily use an HTML5 video as a background to a website or any div.</p>
 				<p>For browsers that don't support the HTML5 video tag, it just uses an image.</p>
+				
+				
+				
 				<div class="alert">
 					<h3>Warning</h3>
 					<p>Don't abuse this code... Don't use it too often, too many video instances will slow down the browser.</p>
 				</div>
 				<h3>Browser Support</h3>
-				<ul>
-					<li>Internet Explorer 9</li>
-					<li>Internet Explorer 8</li>
-					<li>Internet Explorer 7</li>
-					<li>Firefox</li>
-					<li>Google Chrome</li>
-					<li>Safari</li>
-				</ul>
-				<h3>Mobile Devices</h3>
-				<p>To be filled</p>
+				
+				<table>
+					<thead>
+					<tr>
+						<th width=300></th>
+						<th width=100>Video</th>
+						<th width=100>Image</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td><b>Firefox 4 (the best experience)</b></td>
+						<td class="success">Yes (webm)</td>
+						<td class="success">Yes</td>
+					</tr>
+					<tr>
+						<td><b>Internet Explorer 9</b></td>
+						<td class="success">Yes (mp4)</td>
+						<td class="success">Yes</td>
+					</tr>
+					
+					<tr>
+						<td><b>Firefox 3.5</b></td>
+						<td class="success">Yes (ogv)</td>
+						<td class="success">Yes</td>
+					</tr>
+					<tr>
+						<td><b>Chrome</b></td>
+						<td class="success">Yes (webm/mp4)</td>
+						<td class="success">Yes</td>
+					</tr>
+					<tr>
+						<td><b>Safari</b></td>
+						<td class="success">Yes (mp4)</td>
+						<td class="success">Yes</td>
+					</tr>
+					<tr>
+						<td><b>Opera 10.5+</b></td>
+						<td class="success">Yes (ogv)</td>
+						<td class="success">Yes</td>
+					</tr>
+					<tr>
+						<td><b>Internet Explorer 8</b></td>
+						<td class="error">No</td>
+						<td class="success">Yes</td>
+					</tr>
+					<tr>
+						<td><b>Internet Explorer 7</b></td>
+						<td class="error">No</td>
+						<td class="success">Yes</td>
+					</tr>
+					<tr>
+						<td><b>Android Browser</b></td>
+						<td class="error">No</td>
+						<td class="success">Yes</td>
+					</tr>
+					<tr>
+						<td><b>Mobile Safari</b></td>
+						<td colspan="2" class="info">Does not modify default behaviour</td>
+					</tr>
+					<tr>
+						<td><b>Older Browsers that support position:fixed</b></td>
+						<td class="error">No</td>
+						<td class="success">Yes</td>
+					</tr>
+					<tr>
+						<td><b>Archaic browsers</b></td>
+						<td colspan="2" class="info">Does not modify default behaviour</td>
+					</tr>
+					</tbody>
+				</table>
 			</div>
 		
 			<div id="documentation" class="tab">
@@ -71,7 +141,7 @@
 			<dt>autoplay</dt>
 					<dd><code>bool</code></dd>
 			<dt>loop</dt>
-					<dd><code>bool</code></dd>
+					<dd><code>int</code>number of times to loop, true if infinite</dd>
 			<dt>sclae</dt>
 					<dd><code>bool</code></dd>
 			<dt>position</dt>
@@ -96,9 +166,9 @@
 					
 				
 				<ul>
-					<li><a href="demo_bg.html">Body BG</a></li>
-					<li><a href="demo_div.html">Div BG</a></li>
-					<li><a href="demo_text.html">Text Replacement Demo</a></li>
+					<li><a href="demo_bg.html">Man example of a background video</a></li>
+					<li><a href="demo_div.html">Example of a background of a div</a></li>
+					<li><a href="demo_text.html">Text Replacement example</a></li>
 				</ul>
 				
 			</div>
@@ -108,7 +178,7 @@
 				<p>I recommend &pound;3 for a donation, just &pound;3!</p>
 				<a href='http://www.pledgie.com/campaigns/14895'><img alt='Click here to lend your support to: jquery.videoBG and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/14895.png?skin_name=chrome' border='0' /></a>
 							</div>
-			<footer>
+			<div id="footer">
 			<a href="http://sydlawrence.com" style="float:right">Handcrafted by Syd</a>
 			
 			<a href="http://twitter.com/sydlawrence">Follow me</a>
@@ -116,7 +186,7 @@
 			
 			
 			
-		</footer>
+		</div>
 		</div>
 		<div class="clearfix">&nbsp;</div>
 		
