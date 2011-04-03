@@ -1,6 +1,6 @@
 /**
  * @preserve Copyright 2011 Syd Lawrence ( www.sydlawrence.com ).
- * Version: 0.1
+ * Version: 0.2
  *
  * Licensed under MIT and GPLv2.
  *
@@ -232,8 +232,9 @@
 			$img.height(options.height).width(options.width);	
 		}
 		
-		v.play();
-	
+		if ($.fn.videoBG.supportsVideo()) {
+			v.play();
+		}
 		return $div;
 	}
 	
