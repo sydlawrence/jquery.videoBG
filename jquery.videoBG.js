@@ -11,14 +11,6 @@
 (function( $ ){
 
 	$.fn.videoBG = function( selector, options ) { 
-	
-		// if mobile safari
-		if ($.fn.isMobileSafari())
-			return;
-		
-		// if doesn't support position fixed
-		if (!$.fn.canPositionFixed())
-			return
 		
 		var options = {};
 		if (typeof selector == "object") {
@@ -96,9 +88,46 @@
 		return this;
 	}
 
+	// set to fullscreen
+	$.fn.videoBG.setFullscreen = function($el) {
+		var windowWidth = $(window).width(),
+			windowHeight = $(window).height();
+
+		$el.css('min-height',0).css('min-width',0);
+		$el.parent().width(windowWidth).height(windowHeight);
+		// if by width 
+		if (windowWidth / windowHeight > $el.aspectRatio) {
+			$el.width(windowWidth).height('auto');
+			// shift the element up
+			var height = $el.height();
+			var shift = (height - windowHeight) / 2;
+			if (shift < 0) shift = 0;
+			$el.css("top",-shift);
+		} else {
+			$el.width('auto').height(windowHeight);			
+			// shift the element left
+			var width = $el.width();
+			var shift = (width - windowWidth) / 2;
+			if (shift < 0) shift = 0;
+			$el.css("left",-shift);
+			
+			// this is a hack mainly due to the iphone
+			if (shift === 0) {
+				var t = setTimeout(function() {
+					$.fn.videoBG.setFullscreen($el);
+				},500);
+			}
+		}
+
+		$('body > .videoBG_wrapper').width(windowWidth).height(windowHeight);
+			
+	}
+
 	// get the formatted video element
 	$.fn.videoBG.video = function(options) {
 		
+		$('html, body').scrollTop(-1);
+
 		// video container
 		var $div = $('<div/>');
 		$div.addClass('videoBG')
@@ -124,12 +153,29 @@
 		if (options.autoplay) {
 			$video.attr('autoplay',options.autoplay);
 		}
+
+		// if fullscreen
+		if (options.fullscreen) {
+			$video.bind('canplay',function() {
+				// set the aspect ratio
+				$video.aspectRatio = $video.width() / $video.height();
+				$.fn.videoBG.setFullscreen($video);
+			})
+
+			// listen out for screenresize
+			var resizeTimeout;
+			$(window).resize(function() {
+				clearTimeout(resizeTimeout);
+				resizeTimeout = setTimeout(function() {
+					$.fn.videoBG.setFullscreen($video);
+				},100);	
+			});
+			$.fn.videoBG.setFullscreen($video);
+		}
 			
 		
 		// video standard element
 		var v = $video[0];
-		
-		
 		
 		// if meant to loop
 		if (options.loop) {
@@ -212,12 +258,6 @@
 			// add the image instead
 			$div.html($img);
 		}
-		// am I really doing this again?
-		if (options.scale) {
-			$div.css('height','100%').css('width','100%');
-			$video.css('height','100%').css('width','100%');
-			$img.css('height','100%').css('width','100%');
-		}
 		
 		// if text replacement
 		if (options.textReplacement) {
@@ -286,48 +326,16 @@
 			webm:'',
 			poster:'',
 			autoplay:true,
-			loop:5,
-			sclae:false,
+			loop:true,
+			scale:false,
 			position:"absolute",
 			opacity:1,
 			textReplacement:false,
 			zIndex:0,
 			width:0,
-			height:0
+			height:0,
+			fullscreen:false,
+			imgFallback:true
 		}
 
 })( jQuery );
-
-$.fn.isMobileSafari = function (){
-	return (navigator.userAgent.match( /(iPod|iPhone|iPad)/ ) );
-};
-
-$.fn.canPositionFixed = function (){
-  var container = document.body;
-  
-  if (document.createElement && container && container.appendChild && container.removeChild) {
-    var el = document.createElement('div');
-    
-    if (!el.getBoundingClientRect) return null;
-        
-    el.innerHTML = 'x';
-    el.style.cssText = 'position:fixed;top:100px;';
-    container.appendChild(el);
-
-    var originalHeight = container.style.height,
-        originalScrollTop = container.scrollTop;
-
-    container.style.height = '3000px';
-    container.scrollTop = 500;
-
-    var elementTop = el.getBoundingClientRect().top;
-    container.style.height = originalHeight;
-    
-    var isSupported = (elementTop === 100);
-    container.removeChild(el);
-    container.scrollTop = originalScrollTop;
-
-    return isSupported;
-  }
-  return null;
-}

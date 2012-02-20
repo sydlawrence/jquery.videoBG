@@ -9,7 +9,8 @@ $(document).ready(function() {
 		ogv:'assets/christmas_snow.ogv',
 		webm:'assets/christmas_snow.webm',
 		poster:'assets/christmas_snow.jpg',
-		opacity:1
+		opacity:1,
+		fullscreen:true,
 	});
 	
 	
