@@ -1,32 +1,32 @@
 jquery.videoBG 
-================================
+==============
 
 by Syd Lawrence ( www.sydlawrence.com )
 
 Version: 0.2.1
 
 Usage
--------------------------
+-----
 
     $('body').videoBG(options);
 
 
 FAQs
--------------------------
+----
 
 If not displaying correctly in Firefox, make sure your server is outputting the current MIME type for ogv and webm
 
 
 Warning
--------------------------
+-------
 
 Don't abuse this code... Don't use it too often, too many video instances will slow down the browser.
 
 Please bear in mind bandwidth usage for both you, and your visitors
 
 
-Browser Support:
--------------------------
+Browser Support
+---------------
 
 <table>
 <tr><td>Firefox 4+ (the best experience)</td><td>Yes (webm)</td><td>Yes</td></tr>
