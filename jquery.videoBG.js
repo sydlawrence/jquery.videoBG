@@ -85,7 +85,7 @@
 		container.html(wrap);
 		container.append(video);
 		
-		return this;
+		return video.find("video")[0];
 	}
 
 	// set to fullscreen

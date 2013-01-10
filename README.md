@@ -8,14 +8,14 @@ Version: 0.2.1
 Usage
 -----
 
-    $('body').videoBG(options);
+    var videoBG = $('body').videoBG(options);
 
 
 FAQs
 ----
 
 If not displaying correctly in Firefox, make sure your server is outputting the current MIME type for ogv and webm
-
+videoBG is now a <video> element
 
 Warning
 -------
