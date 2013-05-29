@@ -210,7 +210,7 @@
 		if ($.fn.videoBG.supportsVideo()) {
 
 		  	// supports webm
-		  	if ($.fn.videoBG.supportType('webm')){
+		  	if (options.webm && $.fn.videoBG.supportType('webm')){
 		  		
 		  		// play webm
 		  		$video.attr('src',options.webm);
