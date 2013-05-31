@@ -102,14 +102,14 @@
 			var height = $el.height();
 			var shift = (height - windowHeight) / 2;
 			if (shift < 0) shift = 0;
-			$el.css("top",-shift);
+			$el.css("top",-shift).css("left", 0);
 		} else {
 			$el.width('auto').height(windowHeight);			
 			// shift the element left
 			var width = $el.width();
 			var shift = (width - windowWidth) / 2;
 			if (shift < 0) shift = 0;
-			$el.css("left",-shift);
+			$el.css("left",-shift).css("top", 0);
 			
 			// this is a hack mainly due to the iphone
 			if (shift === 0) {
