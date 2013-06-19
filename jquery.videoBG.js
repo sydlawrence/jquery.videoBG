@@ -187,7 +187,7 @@
 				// if we have some loops to throw
 				if (loops_left)
 					// replay that bad boy
-					v.play();
+					v.load();
 				
 				// if not forever
 				if (loops_left !== true)
