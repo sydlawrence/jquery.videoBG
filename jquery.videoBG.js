@@ -144,7 +144,11 @@
 		var $video = $('<video/>');
 		$video.css('position','absolute')
 			.css('z-index',options.zIndex)
-			.attr('poster',options.poster)
+      .attr('poster', 'data:image/gif,AAAA')
+      .css('background-image', 'url(' + options.poster + ')')
+      .css('background-repeat', 'no-repeat')
+      .css('background-position', 'center')
+      .css('background-size', 'cover')
 			.css('top',0)
 			.css('left',0)
 			.css('min-width','100%')
