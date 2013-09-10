@@ -29,6 +29,7 @@ Browser Support
 ---------------
 
 <table>
+<tr><th>Browser</th><th>Video Support</th><th>Image Support</th></tr>
 <tr><td>Firefox 4+ (the best experience)</td><td>Yes (webm)</td><td>Yes</td></tr>
 <tr><td>Internet Explorer 9+</td><td>Yes (mp4)</td><td>Yes</td></tr>
 <tr><td>Firefox 3.5</td><td>Yes (ogv)</td><td>Yes</td></tr>
