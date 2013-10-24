@@ -149,7 +149,12 @@
 			.css('left',0)
 			.css('min-width','100%')
 			.css('min-height','100%');
-		
+
+		if(options.muted) {
+			$video.attr('muted','muted');
+		}
+
+
 		if (options.autoplay) {
 			$video.attr('autoplay',options.autoplay);
 		}
@@ -328,6 +333,7 @@
 			autoplay:true,
 			loop:true,
 			scale:false,
+			muted : false,
 			position:"absolute",
 			opacity:1,
 			textReplacement:false,
