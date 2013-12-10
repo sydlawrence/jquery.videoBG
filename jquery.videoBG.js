@@ -64,7 +64,7 @@
 		}
 		
 		// move the contents into the wrapper
-		wrap.html(container.clone(true));
+		wrap.html(container.children().clone(true));
 		
 		// get the video
 		var video = $.fn.videoBG.video(options);
