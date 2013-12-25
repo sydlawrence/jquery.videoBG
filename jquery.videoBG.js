@@ -154,6 +154,10 @@
 			$video.attr('autoplay',options.autoplay);
 		}
 
+		if (options.id != '') {
+			$video.attr('id', options.id);
+		}
+
 		// if fullscreen
 		if (options.fullscreen) {
 			$video.bind('canplay',function() {
@@ -330,6 +334,7 @@
 			scale:false,
 			position:"absolute",
 			opacity:1,
+			id: '',
 			textReplacement:false,
 			zIndex:0,
 			width:0,
