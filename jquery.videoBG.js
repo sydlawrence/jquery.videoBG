@@ -273,6 +273,7 @@
 		}
 		
 		if ($.fn.videoBG.supportsVideo()) {
+			v.volume = options.volume;
 			v.play();
 		}
 		return $div;
@@ -335,7 +336,8 @@
 			width:0,
 			height:0,
 			fullscreen:false,
-			imgFallback:true
+			imgFallback:true,
+			volume: 1
 		}
 
 })( jQuery );
