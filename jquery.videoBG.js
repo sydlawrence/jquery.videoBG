@@ -273,7 +273,9 @@
 		}
 		
 		if ($.fn.videoBG.supportsVideo()) {
-			v.play();
+			if(options.autoplay)
+				//autoplay set to true, play video as soon as its loaded
+				v.play();
 		}
 		return $div;
 	}
