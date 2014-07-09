@@ -10,10 +10,11 @@
 
  (function( $ ){
 
-  $.fn.videoBG = function( selector, options ) {
-
-    var options = {};
-    if (typeof selector == "object") {
+  $.fn.videoBG = function( options ) {
+    if (options === undefined) {
+      options = {};
+    }
+    if (typeof selector === "object") {
       options = $.extend({}, $.fn.videoBG.defaults, selector);
     }
     else if (!selector) {
@@ -26,20 +27,24 @@
     var container = $(this);
 
     // check if elements available otherwise it will cause issues
-    if (!container.length)
+    if (!container.length) {
       return;
+    }
 
     // container to be at least relative
-    if (container.css('position') == 'static' || !container.css('position'))
+    if (container.css('position') == 'static' || !container.css('position')) {
       container.css('position','relative');
+    }
 
     // we need a width
-    if (options.width == 0)
+    if (options.width === 0) {
       options.width = container.width();
+    }
 
     // we need a height
-    if (options.height == 0)
+    if (options.height === 0) {
       options.height = container.height();
+    }
 
     // get the wrapper
     var wrap = $.fn.videoBG.wrapper();
@@ -102,14 +107,18 @@
       // shift the element up
       var height = $el.height();
       shift = (height - windowHeight) / 2;
-      if (shift < 0) shift = 0;
+      if (shift < 0) {
+        shift = 0;
+      }
       $el.css("top",-shift);
     } else {
       $el.width('auto').height(windowHeight);
       // shift the element left
       var width = $el.width();
       shift = (width - windowWidth) / 2;
-      if (shift < 0) shift = 0;
+      if (shift < 0) {
+        shift = 0;
+      }
       $el.css("left",-shift);
 
       // this is a hack mainly due to the iphone
@@ -161,7 +170,7 @@
         // set the aspect ratio
         $video.aspectRatio = $video.width() / $video.height();
         $.fn.videoBG.setFullscreen($video);
-      })
+      });
 
       // listen out for screenresize
       var resizeTimeout;
@@ -186,23 +195,26 @@
       $video.bind('ended', function(){
 
         // if we have some loops to throw
-        if (loops_left)
+        if (loops_left) {
           // replay that bad boy
-        v.play();
+          v.play();
+        }
 
         // if not forever
-        if (loops_left !== true)
+        if (loops_left !== true) {
           // one less loop
-        loops_left--;
+          loops_left--;
+        }
       });
     }
 
     // when can play, play
     $video.bind('canplay', function(){
 
-      if (options.autoplay)
+      if (options.autoplay) {
         // replay that bad boy
-      v.play();
+        v.play();
+      }
 
     });
 
@@ -221,10 +233,7 @@
 
         // play mp4
         $video.attr('src',options.mp4);
-
-      //  $video.html('<source src="'.options.mp4.'" />');
-
-    }
+      }
       // throw ogv at it then
       else {
 
@@ -237,12 +246,12 @@
     // image for those that dont support the video
     var $img = $('<img/>');
     $img.attr('src',options.poster)
-    .css('position','absolute')
-    .css('z-index',options.zIndex)
-    .css('top',0)
-    .css('left',0)
-    .css('min-width','100%')
-    .css('min-height','100%');
+      .css('position','absolute')
+      .css('z-index',options.zIndex)
+      .css('top',0)
+      .css('left',0)
+      .css('min-width','100%')
+      .css('min-height','100%');
 
     // add the image to the video
     // if suuports video
@@ -286,8 +295,9 @@
   $.fn.videoBG.supportType = function(str) {
 
     // if not at all supported
-    if (!$.fn.videoBG.supportsVideo())
+    if (!$.fn.videoBG.supportsVideo()) {
       return false;
+    }
 
     // create video
     var v = document.createElement('video');
