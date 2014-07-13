@@ -10,7 +10,7 @@
 
  (function( $ ){
 
-  $.fn.videoBG = function( options ) {
+  $.fn.videoBG = function( selector, options ) {
     if (options === undefined) {
       options = {};
     }
