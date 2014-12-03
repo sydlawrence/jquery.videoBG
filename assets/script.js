@@ -11,6 +11,9 @@ $(document).ready(function() {
 		poster:'assets/christmas_snow.jpg',
 		opacity:1,
 		fullscreen:true,
+        loop:1,
+        loopComplete:function(){ console.log("Another loop completed"); },
+        complete:function(){ console.log("all loops complete"); }
 	});
 	
 	
