@@ -3,6 +3,9 @@ jquery.videoBG
 
 by Syd Lawrence ( www.sydlawrence.com )
 
+NO LONGER SUPPORTED OR MAINTAINED, CLONE AT YOUR OWN RISK, NOT ADVISED TO USE
+-----------------------------------------------------------------------------
+
 Version: 0.2.1
 
 Usage
