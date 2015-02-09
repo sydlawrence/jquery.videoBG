@@ -188,11 +188,17 @@
     var v = $video[0];
 
     // if meant to loop
+      console.log("loops: " + options.loop);
     if (options.loop) {
       loops_left = options.loop;
 
       // cant use the loop attribute as firefox doesnt support it
       $video.bind('ended', function(){
+        if(loops_left == 0){
+            options.complete();
+        }else{
+            options.loopComplete();
+        }
 
         // if we have some loops to throw
         if (loops_left) {
@@ -206,6 +212,10 @@
           loops_left--;
         }
       });
+    }else{
+        $video.bind('ended', function(){
+            options.complete();
+        });
     }
 
     // when can play, play
