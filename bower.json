@@ -1,0 +1,24 @@
+{
+  "name": "jquery.videoBG",
+  "version": "0.0.1",
+  "homepage": "http://syddev.com/jquery.videoBG",
+  "authors": [
+    "Syd Lawrence"
+  ],
+  "description": "Adding HTML5 video backgrounds to websites",
+  "main": "jquery.videoBG.js",
+  "keywords": [
+    "jquery",
+    "video"
+    "background",
+    "bg"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
