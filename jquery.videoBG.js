@@ -163,6 +163,10 @@
     if (options.autoplay) {
       $video.attr('autoplay',options.autoplay);
     }
+   
+    if (options.muted) {
+      $video.attr('muted', options.muted);
+    }
 
     // if fullscreen
     if (options.fullscreen) {
@@ -332,6 +336,7 @@
     webm:'',
     poster:'',
     autoplay:true,
+    muted:true,
     loop:true,
     scale:false,
     position:"absolute",
