@@ -336,7 +336,7 @@
     webm:'',
     poster:'',
     autoplay:true,
-    muted:false,
+    muted:true,
     loop:true,
     scale:false,
     position:"absolute",
