@@ -163,6 +163,9 @@
     if (options.autoplay) {
       $video.attr('autoplay',options.autoplay);
     }
+	if(options.muted || typeof options.muted == 'undefined'){
+		$video.prop('muted',true)
+	}
 
     // if fullscreen
     if (options.fullscreen) {
